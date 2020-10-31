@@ -74,6 +74,10 @@ const Order = mongoose.model(
   )
 );
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 app.post("/api/orders", async (req, res) => {
   if (
     !req.body.name ||
