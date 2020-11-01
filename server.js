@@ -21,7 +21,9 @@ mongoose.connect("mongodb://localhost/graceshopping", {
   useCreateIndex: true,
   useUnifiedTopology: true
 });
-
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 const Product = mongoose.model(
   "products",
   new mongoose.Schema({
@@ -74,10 +76,6 @@ const Order = mongoose.model(
     { timestamps: true }
   )
 );
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
 
 app.post("/api/orders", async (req, res) => {
   if (
