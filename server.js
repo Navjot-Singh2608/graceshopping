@@ -7,20 +7,20 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 
-mongoose.connect(
-  "mongodb+srv://graceAdmin:graceShopping2608@@graceshoppingcart.gq9jm.mongodb.net/products?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true
-  }
-);
+// mongoose.connect(
+//   "mongodb+srv://graceAdmin:graceShopping2608@@graceshoppingcart.gq9jm.mongodb.net/products?retryWrites=true&w=majority",
+//   {
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useUnifiedTopology: true
+//   }
+// );
 
-// mongoose.connect("mongodb://localhost/graceshopping", {
-//   useNewUrlParser: true,
-//   useCreateIndex: true,
-//   useUnifiedTopology: true
-// });
+mongoose.connect("mongodb://localhost/graceshopping", {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+});
 
 const Product = mongoose.model(
   "products",
